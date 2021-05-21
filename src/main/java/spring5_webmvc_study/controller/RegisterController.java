@@ -2,7 +2,6 @@ package spring5_webmvc_study.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +22,12 @@ public class RegisterController {
 		return "/register/step1";
 	}
 	
-	@PostMapping("/register/step2")
-	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree, Model model) {
+	@PostMapping("/register/step2")		// 커맨드 객체를 파라미터로 추가
+	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree, RegisterRequest registerRequest) {
 		if (!agree) {
 			return "/register/step1";
 		}
-		model.addAttribute("registerRequest", new RegisterRequest());
+//		model.addAttribute("registerRequest", new RegisterRequest());
 		return "/register/step2";
 	}
 	

@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import spring5_webmvc_study.survey.AnsweredData;
 import spring5_webmvc_study.survey.Question;
@@ -16,11 +16,20 @@ import spring5_webmvc_study.survey.Question;
 @Controller
 @RequestMapping("/survey")
 public class SurveyController {
+//	@GetMapping
+//	public String form(Model model) {
+//		List<Question> questions = createQuestion();
+//		model.addAttribute("questions", questions);
+//		return "survey/surveyForm";
+//	}
+	// ModelAndView는 모델과 뷰 이름을 함께 제공하여 한번에 처리 가능
 	@GetMapping
-	public String form(Model model) {
+	public ModelAndView form() {
 		List<Question> questions = createQuestion();
-		model.addAttribute("questions", questions);
-		return "survey/surveyForm";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("questions", questions);
+		mav.setViewName("survey/surveyForm");
+		return mav;
 	}
 
 	@PostMapping
