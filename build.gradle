@@ -2,8 +2,8 @@ plugins {
     id 'war'
 }
 
-sourceCompatibility = 1.8 //컴파일할 때 적용할 java code의 jdkversion 지정
-targetCompatibility = 1.8
+sourceCompatibility= 1.8 //컴파일할 때 적용할 java code의 jdkversion 지정
+targetCompatibility= 1.8
 
 //인코딩지정
 tasks.withType(JavaCompile) {

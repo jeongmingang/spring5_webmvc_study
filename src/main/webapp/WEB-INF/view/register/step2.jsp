@@ -31,14 +31,14 @@
 				<form:input path="password"/> 		  
 				<form:errors path="password"/> 		  
 			</label> 
-			</p>
+		</p>
 		<p>
 			<label>
 				<spring:message code="password.confirm"/>:<br> 
 				<form:input path="confirmPassword"/> 
 				<form:errors path="confirmPassword"/> 
 			</label> 
-			</p>
+		</p>
 		<input type="submit" value="<spring:message code="register.btn"/>">
 	</form:form>
 </body>

@@ -6,9 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import spring5_webmvc_study.interceptor.AuthCheckInterceptor;
 
 @Configuration
 @EnableWebMvc	// 스프링 MVC설정 활성화
@@ -37,5 +40,17 @@ public class MvcConfig implements WebMvcConfigurer {
 		ms.setBasename("message.label");	// message 패키지에 속한 label 프로퍼티 파일로 부터 메시지를 읽어 옴
 		ms.setDefaultEncoding("UTF-8");
 		return ms;
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {	
+		registry.addInterceptor(authCheckInterceptor())
+			.addPathPatterns("/edit/**")			// /edit/ 로 시작하는 모든 경로에 인터셉터를 적용
+			.excludePathPatterns("/edit/help/**");	// 메서드에 지정한 경로 패턴 중 일부를 제외하고 싶다면 excludePathPatterns()메서드를 사용
+	}
+	
+	@Bean
+	public AuthCheckInterceptor authCheckInterceptor() {
+		return new AuthCheckInterceptor();
 	}
 }

@@ -28,6 +28,10 @@ public class Member {
 		}
 	}
 	
+	public boolean matchPassword(String password) {	// 암호 일치 여부 확인
+		return this.password.equals(password);
+	}
+	
 	public Long getId() {
 		return id;
 	}
