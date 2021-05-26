@@ -30,6 +30,7 @@ public class MemberDetailController {
 	}
 	
 	// 컨트롤러 예외 처리
+	// @ExceptionHandler 애노테이션을 적용하면 해당 컨트롤러에서 발생한 익셉션만 처리
 	@ExceptionHandler (TypeMismatchException.class)
 	public String handleTypeMismatchException() {
 		return "member/invalidId";

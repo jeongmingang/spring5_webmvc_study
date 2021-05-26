@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import spring5_webmvc_study.controller.RegisterController;
 
 @Configuration
-@ComponentScan(basePackages = {"spring5_webmvc_study.controller"})
+@ComponentScan(basePackages = {"spring5_webmvc_study.controller", "spring5_webmvc_study.common"})
 public class ControllerConfig {
 	
 	@Bean
