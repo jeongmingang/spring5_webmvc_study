@@ -45,6 +45,12 @@ public class MemberDao {
 		return jdbcTemplate.query(sql, memRowMapper, from, to);
 	}
 	
+	public Member selectById (Long memId) {
+		String sql = "select * from member where id = ?";
+		List<Member> results = jdbcTemplate.query(sql, memRowMapper, memId);
+		return results.isEmpty() ? null : results.get(0);
+	}
+	
 	// 결과가 1개 이상인 경우
 	public Member selectByEmail (String email) {
 		List<Member> results = jdbcTemplate.query("select * from member where email = ?", memRowMapper, email);
