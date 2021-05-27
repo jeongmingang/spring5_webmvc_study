@@ -75,6 +75,5 @@ public class MvcConfig implements WebMvcConfigurer {
 			.simpleDateFormat("yyyy-MM-dd HH:mm:ss")
 			.build();
 		converters.add(0, new MappingJackson2HttpMessageConverter(objectMapper));
-
 	}
 }
