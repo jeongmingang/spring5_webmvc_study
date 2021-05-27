@@ -2,9 +2,12 @@ package spring5_webmvc_study.spring;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Member {
 	private Long id;
 	private String email;
+	@JsonIgnore
 	private String password;
 	private String name;
 	private LocalDateTime registerDateTime;
