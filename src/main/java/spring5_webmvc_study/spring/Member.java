@@ -11,7 +11,7 @@ public class Member {
 	@JsonIgnore
 	private String password;
 	private String name;
-	@JsonFormat(pattern = "yyyyMMddHHmmss")
+//	@JsonFormat(pattern = "yyyyMMddHHmmss")
 	private LocalDateTime registerDateTime;
 	
 	public Member() {
