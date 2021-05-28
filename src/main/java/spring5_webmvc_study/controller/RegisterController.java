@@ -27,7 +27,6 @@ public class RegisterController {
 		if (!agree) {
 			return "/register/step1";
 		}
-//		model.addAttribute("registerRequest", new RegisterRequest());
 		return "/register/step2";
 	}
 	
@@ -37,10 +36,8 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register/step3")
-	public String handleStep3(RegisterRequest regReq, Errors errors) {	// Errors 타입 파라미터는 반드시 커맨드 객체를 위한 파라미터 다음에 위치해야 함
-		System.out.println(regReq);
+	public String handleStep3(RegisterRequest regReq, Errors errors) {
 		
-		new RegisterRequestValidator().validate(regReq, errors);
 		if (errors.hasErrors())
 			return "register/step2";
 		
@@ -52,6 +49,4 @@ public class RegisterController {
 			return "register/step2";
 		}
 	}
-	
-	
 }
